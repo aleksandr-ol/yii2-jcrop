@@ -4,13 +4,13 @@
  * @link http://newerton.com.br
  * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
  */
-namespace aleksandrOl\jcrop;
+namespace aleksandrol\jcrop;
 
 use yii\web\AssetBundle;
 
 class jCropAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/aleksandrOl/yii2-jcrop/assets';
+    public $sourcePath = '@vendor/aleksandrol/yii2-jcrop/assets';
 
     public $js = [
         'js/jquery.color.js',

@@ -8,7 +8,7 @@
  * @version 1.0.0
  */
 
-namespace aleksandrOl\jcrop;
+namespace aleksandrol\jcrop;
 
 use yii\base\Widget;
 use yii\helpers\Html;

@@ -12,13 +12,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist newerton/yii2-jcrop "dev-master"
+php composer.phar require --prefer-dist aleksandrOl/yii2-jcrop "dev-master"
 ```
 
 or add
 
 ```
-"newerton/yii2-jcrop": "dev-master"
+"aleksandrOl/yii2-jcrop": "dev-master"
 ```
 
 to the require section of your `composer.json` file.
@@ -31,7 +31,7 @@ Once the extension is installed, simply use it in your code by  :
 
 ```php
 <?php
-echo \newerton\jcrop\jCrop::widget([
+echo \aleksandrOl\jcrop\jCrop::widget([
     // Image URL
     'url' => '/path/to/full/image.jpg',
     // options for the IMG element

@@ -55,6 +55,11 @@ class jCrop extends Widget {
     public $ajaxParams = [];
 
     /**
+     * @var string Extra parameters to process the AJAX success result.
+     */
+    public $ajaxSuccess;
+
+    /**
      * @inheritdoc
      */
     public function init() {
@@ -105,6 +110,7 @@ class jCrop extends Widget {
         $this->jsOptions['onChange'] = new JsExpression("function(c) {ejcrop_getCoords(c,'{$this->id}'); ejcrop_showThumb(c,'{$this->id}');}");
         $this->jsOptions['ajaxUrl'] = $this->ajaxUrl;
         $this->jsOptions['ajaxParams'] = $this->ajaxParams;
+        $this->jsOptions['ajaxSuccess'] = $this->ajaxSuccess;
 
         $options = !empty($this->jsOptions) ? Json::encode($this->jsOptions) : '';
 

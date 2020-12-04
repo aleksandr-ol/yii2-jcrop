@@ -1,9 +1,9 @@
 /**
  * Javascript for EJcrop extension.
  *
- * @copyright © Digitick <www.digitick.net> 2011
+ * @copyright ï¿½ Digitick <www.digitick.net> 2011
  * @license GNU Lesser General Public License v3.0
- * @author Ianaré Sévi
+ * @author Ianarï¿½ Sï¿½vi
  * @author Jacques Basseck
  * 
  */
@@ -69,6 +69,7 @@ function ejcrop_initWithButtons(id, options) {
             url: options.ajaxUrl,
             data: ajaxData,
             success: function(msg) {
+                eval("(" + options.ajaxSuccess + ")");
                 if (msg != 'error') {
                     // change the image source
                     $('#thumb_' + id + '> img').attr('src', msg);

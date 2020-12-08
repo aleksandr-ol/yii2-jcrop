@@ -108,3 +108,44 @@ function ejcrop_initWithButtons(id, options) {
         jcrop.id.release();
     });
 }
+
+function ejcrop_changeOptions(id, options) {
+    var jcrop = {};
+
+    function ajaxRequest(id) {
+        // ajax request to send
+        var ajaxData = {};
+        ajaxData[id + '_x'] = $('#' + id + '_x').val();
+        ajaxData[id + '_x2'] = $('#' + id + '_x2').val();
+        ajaxData[id + '_y'] = $('#' + id + '_y').val();
+        ajaxData[id + '_y2'] = $('#' + id + '_y2').val();
+        ajaxData[id + '_h'] = $('#' + id + '_h').val();
+        ajaxData[id + '_w'] = $('#' + id + '_w').val();
+        for (var v in options.ajaxParams) {
+            ajaxData[v] = options.ajaxParams[v];
+        }
+        $.ajax({
+            type: "post",
+            url: options.ajaxUrl,
+            data: ajaxData,
+            success: function(msg) {
+                eval("(" + options.ajaxSuccess + ")");
+                if (msg != 'error') {
+                    // change the image source
+                    $('#thumb_' + id + '> img').attr('src', msg);
+                    ejcrop_reinitThumb(id);
+                }
+            }
+        });
+    }
+
+    $('body').undelegate('#crop_' + id, 'click');
+
+    $('body').delegate('#crop_' + id, 'click', function(e) {
+        $('#start_' + id).show();
+        $('#crop_' + id + ', #cancel_' + id).hide();
+        ajaxRequest(id);
+        jcrop.id.release();
+        jcrop.id.disable();
+    });
+}

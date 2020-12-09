@@ -148,7 +148,7 @@ function ejcrop_changeOptions(id, newOptions) {
     $('body').undelegate('#crop_' + id, 'click');
     $('body').undelegate('#cancel_' + id, 'click');
     $("#" + id + " + .jcrop-holder").remove();
-    $("#" + id).removeAttribute("style");
+    $("#" + id).removeAttr("style");
     $("#" + id).show();
 
     $('body').delegate('#start_' + id, 'click', function(e) {

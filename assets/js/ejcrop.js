@@ -145,10 +145,5 @@ function ejcrop_changeOptions(id, options) {
         $('#start_' + id).show();
         $('#crop_' + id + ', #cancel_' + id).hide();
         ajaxRequest(id);
-        if (!jcrop.id) {
-            jcrop.id = $.Jcrop('#' + id, options);
-        }
-        jcrop.id.release();
-        jcrop.id.disable();
     });
 }

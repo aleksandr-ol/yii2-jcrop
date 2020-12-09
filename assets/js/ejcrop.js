@@ -84,6 +84,7 @@ function ejcrop_initWithButtons(id, options) {
     }
 
     $('body').delegate('#start_' + id, 'click', function(e) {
+        $("#" + id).hide();
         $("#" + id + " + .jcrop-holder").show();
         $('#crop_' + id + ', #cancel_' + id).show();
         $('#start_' + id).hide();
@@ -103,6 +104,7 @@ function ejcrop_initWithButtons(id, options) {
 
     $('body').delegate('#crop_' + id, 'click', function(e) {
         $("#" + id + " + .jcrop-holder").hide();
+        $("#" + id).show();
         $('#start_' + id).show();
         $('#crop_' + id + ', #cancel_' + id).hide();
         ajaxRequest(id);
@@ -154,6 +156,7 @@ function ejcrop_changeOptions(id, newOptions) {
     $("#" + id).show();
 
     $('body').delegate('#start_' + id, 'click', function(e) {
+        $("#" + id).hide();
         $("#" + id + " + .jcrop-holder").show();
         $('#crop_' + id + ', #cancel_' + id).show();
         $('#start_' + id).hide();
@@ -173,6 +176,7 @@ function ejcrop_changeOptions(id, newOptions) {
 
     $('body').delegate('#crop_' + id, 'click', function(e) {
         $("#" + id + " + .jcrop-holder").hide();
+        $("#" + id).show();
         $('#start_' + id).show();
         $('#crop_' + id + ', #cancel_' + id).hide();
         ajaxRequest(id);

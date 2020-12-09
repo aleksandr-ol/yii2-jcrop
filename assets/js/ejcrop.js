@@ -139,11 +139,32 @@ function ejcrop_changeOptions(id, options) {
         });
     }
 
-    $('body').undelegate('#crop_' + id, 'click');
+    $('body').delegate('#start_' + id, 'click', function(e) {
+        $('#crop_' + id + ', #cancel_' + id).show();
+        $('#start_' + id).hide();
+        if (!jcrop.id) {
+            jcrop.id = $.Jcrop('#' + id, options);
+        }
+        jcrop.id.enable();
+        var dim = jcrop.id.getBounds();
+
+        if(options.selection)
+            jcrop.id.ui.selection.addClass('jcrop-selection');
+        if(options.theme)
+            jcrop.id.ui.holder.addClass('jcrop-' + options.theme);
+
+        jcrop.id.animateTo([dim[0] / 4, dim[1] / 4, dim[0] / 2, dim[1] / 2]);
+    });
 
     $('body').delegate('#crop_' + id, 'click', function(e) {
         $('#start_' + id).show();
         $('#crop_' + id + ', #cancel_' + id).hide();
         ajaxRequest(id);
+        jcrop.id.release();
+        jcrop.id.disable();
+    });
+
+    $('body').delegate('#cancel_' + id, 'click', function(e) {
+        jcrop.id.release();
     });
 }

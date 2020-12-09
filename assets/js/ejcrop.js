@@ -5,7 +5,7 @@
  * @license GNU Lesser General Public License v3.0
  * @author Ianar� S�vi
  * @author Jacques Basseck
- * 
+ *
  */
 
 function ejcrop_showThumb(coords, id) {
@@ -49,8 +49,12 @@ function ejcrop_cancelCrop(jcrop) {
     ejcrop_reinitThumb(jcrop.ui.holder.prev("img").attr("id"));
 }
 
+var initStateOptions = {};
+
 function ejcrop_initWithButtons(id, options) {
     var jcrop = {};
+
+    initStateOptions[id] = options;
 
     function ajaxRequest(id) {
         // ajax request to send
@@ -87,12 +91,12 @@ function ejcrop_initWithButtons(id, options) {
         }
         jcrop.id.enable();
         var dim = jcrop.id.getBounds();
-        
+
         if(options.selection)
             jcrop.id.ui.selection.addClass('jcrop-selection');
         if(options.theme)
             jcrop.id.ui.holder.addClass('jcrop-' + options.theme);
-        
+
         jcrop.id.animateTo([dim[0] / 4, dim[1] / 4, dim[0] / 2, dim[1] / 2]);
     });
 
@@ -109,8 +113,9 @@ function ejcrop_initWithButtons(id, options) {
     });
 }
 
-function ejcrop_changeOptions(id, options) {
+function ejcrop_changeOptions(id, newOptions) {
     var jcrop = {};
+    options = $.extend(initStateOptions[id], newOptions);
 
     function ajaxRequest(id) {
         // ajax request to send
@@ -142,6 +147,9 @@ function ejcrop_changeOptions(id, options) {
     $('body').undelegate('#start_' + id, 'click');
     $('body').undelegate('#crop_' + id, 'click');
     $('body').undelegate('#cancel_' + id, 'click');
+    $("#" + id + " + .jcrop-holder").remove();
+    $("#" + id).removeAttribute("style");
+    $("#" + id).show();
 
     $('body').delegate('#start_' + id, 'click', function(e) {
         $('#crop_' + id + ', #cancel_' + id).show();

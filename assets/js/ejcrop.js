@@ -139,6 +139,10 @@ function ejcrop_changeOptions(id, options) {
         });
     }
 
+    $('body').undelegate('#start_' + id, 'click');
+    $('body').undelegate('#crop_' + id, 'click');
+    $('body').undelegate('#cancel_' + id, 'click');
+
     $('body').delegate('#start_' + id, 'click', function(e) {
         $('#crop_' + id + ', #cancel_' + id).show();
         $('#start_' + id).hide();

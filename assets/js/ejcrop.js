@@ -84,11 +84,12 @@ function ejcrop_initWithButtons(id, options) {
     }
 
     $('body').delegate('#start_' + id, 'click', function(e) {
-        $("#" + id).hide();
-        $("#" + id + " + .jcrop-holder").show();
         $('#crop_' + id + ', #cancel_' + id).show();
         $('#start_' + id).hide();
         if (!jcrop.id) {
+            $('#' + id).css('height', 'auto');
+            let height = $('#' + id).css('height');
+            $('#' + id).css('height', '' + parseInt(height));
             jcrop.id = $.Jcrop('#' + id, options);
         }
         jcrop.id.enable();
@@ -100,6 +101,8 @@ function ejcrop_initWithButtons(id, options) {
             jcrop.id.ui.holder.addClass('jcrop-' + options.theme);
 
         jcrop.id.animateTo([dim[0] / 4, dim[1] / 4, dim[0] / 2, dim[1] / 2]);
+        $("#" + id).hide();
+        $("#" + id + " + .jcrop-holder").show();
     });
 
     $('body').delegate('#crop_' + id, 'click', function(e) {
@@ -156,11 +159,12 @@ function ejcrop_changeOptions(id, newOptions) {
     $("#" + id).show();
 
     $('body').delegate('#start_' + id, 'click', function(e) {
-        $("#" + id).hide();
-        $("#" + id + " + .jcrop-holder").show();
         $('#crop_' + id + ', #cancel_' + id).show();
         $('#start_' + id).hide();
         if (!jcrop.id) {
+            $('#' + id).css('height', 'auto');
+            let height = $('#' + id).css('height');
+            $('#' + id).css('height', '' + parseInt(height));
             jcrop.id = $.Jcrop('#' + id, options);
         }
         jcrop.id.enable();
@@ -172,6 +176,8 @@ function ejcrop_changeOptions(id, newOptions) {
             jcrop.id.ui.holder.addClass('jcrop-' + options.theme);
 
         jcrop.id.animateTo([dim[0] / 4, dim[1] / 4, dim[0] / 2, dim[1] / 2]);
+        $("#" + id).hide();
+        $("#" + id + " + .jcrop-holder").show();
     });
 
     $('body').delegate('#crop_' + id, 'click', function(e) {
